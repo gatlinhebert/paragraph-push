@@ -78,23 +78,7 @@ runs:
       with:
         node-version: v18.17.1
 
-    - name: Check for project-level para CLI
-      id: checkProjectCLI
-      working-directory: ${{ inputs.path }}
-      shell: bash
-      run: |
-        deps=$(cat package.json | jq .dependencies | grep @useparagon/cli | wc -l)
-        echo "deps=$deps" >> $GITHUB_OUTPUT
-
-    - name: Install para CLI
-      if: steps.checkProjectCLI.outputs.deps != '0'
-      working-directory: ${{ inputs.path }}
-      shell: bash
-      run: |
-        npm install --include=dev
-
     - name: Install para CLI globally
-      if: steps.checkProjectCLI.outputs.deps == '0'
       shell: bash
       run: |
         npm install -g @useparagon/cli
