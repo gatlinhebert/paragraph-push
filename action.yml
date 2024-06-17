@@ -83,7 +83,7 @@ runs:
       working-directory: ${{ inputs.path }}
       shell: bash
       run: |
-        deps=$(npm list | grep @useparagon/cli | wc -l)
+        deps=$(cat package.json | jq .dependencies | grep @useparagon/cli | wc -l)
         echo "deps=$deps" >> $GITHUB_OUTPUT
 
     - name: Install para CLI
