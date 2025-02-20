@@ -113,14 +113,14 @@ runs:
 
     - name: Build Paragraph project
       shell: bash
-      working-directory: ${{ inputs.path }}
+      working-directory: ${{ inputs.subfolder }}
       run: |
         npx para install
         npx para build
 
     - name: Push to Paragon
       shell: bash
-      working-directory: ${{ inputs.path }}
+      working-directory: ${{ inputs.subfolder }}
       if: github.event_name == 'push' && steps.validate.outputs.valid == 'true'
       run: npx para push
 
