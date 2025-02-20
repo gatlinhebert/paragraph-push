@@ -15,11 +15,10 @@ inputs:
     type: string
     required: false
     default: "https://dashboard.useparagon.com"
-  path:
+  subfolder:
     type: string
-    description: 'Specify base path to Paragraph project, relative to the working directory.'
     required: false
-    default: "./"
+    default: '.'
 
 runs:
   using: 'composite'
